@@ -1,0 +1,19 @@
+// upload foto
+		// $ekstensi = array("jpg","png","gif","svg");
+		// $ktp_penduduk = $_FILES['poto']['name'];
+		// $x = explode('.', $ktp_penduduk);
+		// $teks_ekstensi = strtolower(end($x));
+		// $ukuran = $_FILES['poto']['size'];
+		// $file_tmp = $_FILES['poto']['tmp_name'];
+
+		// if (in_array( $teks_ekstensi, $ekstensi ) === true) {
+		// 	if($ukuran < 100000) {
+		// 		move_uploaded_file($file_tmp, 'images/'. $ktp_penduduk);
+		// 	} else {
+		// 		$error[] = "Ukuran terlalu besar";
+		// 	}
+
+				
+		// } 	else {
+		// 		$error [] = "Ekstensi tidak didukung";
+		// 	}

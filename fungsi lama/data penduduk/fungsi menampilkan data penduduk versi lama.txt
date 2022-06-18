@@ -1,0 +1,66 @@
+<?php
+ 
+  $penduduk = [];
+  $limit = 6 ; // batas jumlah data yang ditampilkan pada satu 1 halaman, yaitu satu halaman terdiri dari 6 data
+
+  $cari = (isset($_GET['cari'])) ? $_GET['cari'] : '' ; // mengecheck search 
+  $page = (isset($_GET['page'])) ? $_GET['page'] : 1 ; // jika page ada , variabel page akan dimulai dari page yang aktif, jika page kosong, maka mulai dari satu
+
+  $startNumber = ($page > 1) ? ($page * $limit) - $limit : 1;
+  $prev = $page - 1;
+  $next = $page + 1;
+
+  $limitStart = ($page - 1) * $limit; // sebagai pemulai data dari halaman
+                                      // jika halaman 1 , maka 1-1 = 0, lalu dikali limit(6)
+                                      // hasil adalah 0, maka pada halaman 1, data dimulai dari data ke 1 sampai data ke 6
+
+
+  // untuk menampilkan data sesuai dengan halaman
+  // if($cari == '') { // jika search tidak ada
+  //   $getData = mysqli_query($conn, "SELECT * FROM tb_penduduk limit $limitStart , $limit"); // menampilkan semua data sesuai limit yaitu 6
+
+  // } 
+  // else { // jika search ada
+  //   $getData = mysqli_query($conn,"SELECT * FROM tb_penduduk WHERE nama_penduduk LIKE '%$cari%' 
+  //                                             OR jenis_kelamin LIKE '%$cari%'
+  //                                             OR alamat_penduduk LIKE '%$cari%' 
+  //                                             OR rt_penduduk LIKE '%$cari%' 
+  //                                             OR no_penduduk LIKE '%$cari%' 
+  //                                             OR nik_penduduk LIKE '%$cari%' 
+  //                                             limit $limitStart , $limit "); // mencari hasil sesuai hasil search(variabel $cari)  
+  // }
+
+  
+  // while($rows = mysqli_fetch_assoc($getData)) {
+  //   $penduduk[] = $rows;
+  // }
+
+   // untuk membuat halaman menggunakan total data tanpa limit
+
+  if($cari == '') {
+    $data = mysqli_query($conn, "SELECT * FROM tb_penduduk");
+  }
+  
+  else  {
+  $data = mysqli_query($conn, "SELECT * FROM tb_penduduk WHERE nama_penduduk LIKE '%$cari%' 
+                                          OR jenis_kelamin LIKE '%$cari%'
+                                          OR alamat_penduduk LIKE '%$cari%' 
+                                          OR rt_penduduk LIKE '%$cari%' 
+                                          OR no_penduduk LIKE '%$cari%' 
+                                          OR nik_penduduk LIKE '%$cari%' 
+                                          "); // mencari hasil sesuai hasil search(variabel $cari)
+  }
+  while($rows = mysqli_fetch_assoc($data)) {
+    $penduduk[] = $rows;
+  }
+
+  $jumlahData = mysqli_num_rows($data); // menghitung jumlah keseluruhan data
+  $jumlahPage = ceil($jumlahData / $limit); // untuk menghitung jumlah halaman
+                                            // ceil digunakan untuk membulatkan bilangan koma ke atas (jika 2,1 maka jadi 3)
+
+  $no = $limitStart + 1;
+
+  
+  
+
+  ?>

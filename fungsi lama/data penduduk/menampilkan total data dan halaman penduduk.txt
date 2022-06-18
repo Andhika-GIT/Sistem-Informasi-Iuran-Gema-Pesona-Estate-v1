@@ -1,0 +1,31 @@
+<div class="card-footer clearfix">
+                    <div class="text-right">
+                        <!-- <nav aria label="..."> -->
+                          <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a href="" class="page-link" tabindex="-1">Total Data:</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="" class="page-link"><?php echo $jumlahData ?> </a>
+                            </li>
+                          </ul>         
+                    </div>
+              </div>
+            </div>
+<nav>                
+                      <ul class="pagination">  
+                              <li class="page-item <?php if($page == 1) {echo 'disable';} else { echo '';} ?> "> 
+                                  <a class="page-link" <?php if($page > 1) {echo "href='?page=$prev'";} ?> >Previous</a>
+                              </li>
+                              <?php for ($x=1; $x <= $jumlahPage; $x++) { 
+                                $active = ($page == $x) ? 'active' : ''; 
+                              ?>  
+                              <li class="page-item <?php echo $active; ?> "> 
+                                  <a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x ?> </a> 
+                              </li>
+                              <?php } ?> 
+                              <li class="page-item <?php if($page == $jumlahPage) {echo 'disable';} else { echo '';} ?>">
+                                <a class="page-link" <?php if($page < $jumlahPage) {echo "href='?page=$next'";} ?> >Next</a>
+                            </li>
+                      </ul> 
+                    </nav>  
