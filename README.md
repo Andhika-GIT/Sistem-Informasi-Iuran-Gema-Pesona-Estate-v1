@@ -1,7 +1,6 @@
 ## About App
 
-dues Management With PHP, MYSQL and Datatables
-This is the first project i made with PHP, so yeah the file is kinda messy
+dues Management With PHP, MYSQL and Datatables. This is the first project i made with PHP, so yeah the file is kinda messy
 
 ## How to use
 
